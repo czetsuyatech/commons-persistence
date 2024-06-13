@@ -1,4 +1,4 @@
-package com.czetsuyatech.persistence.entities;
+package com.czetsuyatech.persistence;
 
 import java.io.Serializable;
 
