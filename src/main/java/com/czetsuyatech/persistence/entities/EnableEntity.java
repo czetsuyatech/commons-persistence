@@ -22,4 +22,8 @@ public abstract class EnableEntity extends AuditableEntity {
 
   @Column(name = "disabled")
   private boolean disabled;
+
+  public boolean isEnabled() {
+    return !disabled;
+  }
 }
