@@ -17,7 +17,7 @@ import lombok.experimental.SuperBuilder;
 public abstract class BusinessDTO<ID extends Serializable> extends EnableDTO implements RefDataDTO<ID> {
 
   private String code;
-  private String name;
+  private String description;
 
   @Override
   public boolean isEnabled() {

@@ -27,7 +27,7 @@ public abstract class BusinessEntity extends EnableEntity {
   @NotNull
   protected String code;
 
-  @Column(name = "name", nullable = true, length = 255)
+  @Column(name = "description", nullable = true, length = 255)
   @Size(max = 255)
-  protected String name;
+  protected String description;
 }
