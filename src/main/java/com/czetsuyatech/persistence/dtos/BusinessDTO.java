@@ -1,39 +1,31 @@
 package com.czetsuyatech.persistence.dtos;
 
 import java.io.Serializable;
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class BusinessDTO<ID extends Serializable> extends EnableDTO<ID> {
+@SuperBuilder
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
+public abstract class BusinessDTO<ID extends Serializable> extends EnableDTO implements RefDataDTO<ID> {
 
   private String code;
-  private String description;
+  private String name;
 
-  public BusinessDTO(BusinessDTO<ID> other) {
-
-    setId(other.getId());
-    this.code = other.code;
-    this.description = other.description;
+  @Override
+  public boolean isEnabled() {
+    return super.isEnabled();
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof BusinessDTO<?> that)) {
-      return false;
-    }
-    return Objects.equals(getCode(), that.getCode());
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(getCode());
+  public Integer getSortOrder() {
+    return 0;
   }
 }

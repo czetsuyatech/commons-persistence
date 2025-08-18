@@ -1,10 +1,6 @@
-package com.czetsuyatech.persistence.entities;
+package com.czetsuyatech.persistence.persistence.entities;
 
-import com.czetsuyatech.persistence.IEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @MappedSuperclass
 @NoArgsConstructor
@@ -25,9 +20,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @SuperBuilder
 @Getter
 @Setter
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"hibernateLazyInitializer", "handler"})
-@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable, IEntity {
 
   public static final int NB_PRECISION = 23;

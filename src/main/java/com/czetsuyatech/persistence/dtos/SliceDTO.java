@@ -1,0 +1,36 @@
+package com.czetsuyatech.persistence.dtos;
+
+import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.domain.Pageable;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class SliceDTO<T> {
+
+  private int number;
+  private int size;
+  private int numberOfElements;
+  private List<T> content;
+  private boolean hasContent;
+  private boolean first;
+  private boolean last;
+  private boolean hasNext;
+  private boolean hasPrevious;
+  private Pageable pageable;
+
+  public boolean hasContent() {
+    return this.hasContent;
+  }
+
+  public boolean hasNext() {
+    return this.hasNext;
+  }
+
+  public boolean hasPrevious() {
+    return this.hasPrevious;
+  }
+}

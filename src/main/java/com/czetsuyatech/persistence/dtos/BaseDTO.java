@@ -1,14 +1,15 @@
 package com.czetsuyatech.persistence.dtos;
 
-import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class BaseDTO<ID extends Serializable> {
+@SuperBuilder
+public abstract class BaseDTO {
 
-  private ID id;
+  private Long id;
 }

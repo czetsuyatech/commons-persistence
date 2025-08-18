@@ -1,18 +1,21 @@
 package com.czetsuyatech.persistence.dtos;
 
-import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class EnableDTO<ID extends Serializable> extends AuditableDTO<ID> {
+@SuperBuilder
+@ToString(callSuper = true)
+public class EnableDTO extends AuditableDTO {
 
-  private boolean disabled;
+  private boolean activeStatus;
 
   public boolean isEnabled() {
-    return !disabled;
+    return activeStatus;
   }
 }

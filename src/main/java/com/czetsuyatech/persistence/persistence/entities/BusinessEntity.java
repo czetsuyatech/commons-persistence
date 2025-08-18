@@ -1,10 +1,9 @@
-package com.czetsuyatech.persistence.entities;
+package com.czetsuyatech.persistence.persistence.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,7 +18,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
 public abstract class BusinessEntity extends EnableEntity {
 
@@ -28,26 +27,7 @@ public abstract class BusinessEntity extends EnableEntity {
   @NotNull
   protected String code;
 
-  @Column(name = "description", nullable = true, length = 255)
+  @Column(name = "name", nullable = true, length = 255)
   @Size(max = 255)
-  protected String description;
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof BusinessEntity that)) {
-      return false;
-    }
-    if (!super.equals(o)) {
-      return false;
-    }
-    return Objects.equals(getCode(), that.getCode());
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode(), getCode());
-  }
+  protected String name;
 }

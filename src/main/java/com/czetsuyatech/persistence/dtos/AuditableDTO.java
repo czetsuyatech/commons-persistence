@@ -1,15 +1,18 @@
 package com.czetsuyatech.persistence.dtos;
 
-import java.io.Serializable;
 import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class AuditableDTO<ID extends Serializable> extends BaseDTO<ID> {
+@SuperBuilder
+@ToString(callSuper = true)
+public abstract class AuditableDTO extends BaseDTO {
 
   private Instant created;
   private Instant updated;

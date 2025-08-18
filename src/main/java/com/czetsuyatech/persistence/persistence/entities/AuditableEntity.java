@@ -1,4 +1,4 @@
-package com.czetsuyatech.persistence.entities;
+package com.czetsuyatech.persistence.persistence.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
