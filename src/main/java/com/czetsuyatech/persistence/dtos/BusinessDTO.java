@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @NoArgsConstructor
 @SuperBuilder
-@ToString(callSuper = true)
+@ToString(callSuper = true, of = {"id", "code"})
 @EqualsAndHashCode(callSuper = false)
 public abstract class BusinessDTO<ID extends Serializable> extends EnableDTO implements RefDataDTO<ID> {
 

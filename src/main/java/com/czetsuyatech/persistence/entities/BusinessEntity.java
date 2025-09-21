@@ -19,7 +19,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
+@ToString(callSuper = true, of = {"id", "code"})
 public abstract class BusinessEntity extends EnableEntity {
 
   @Column(name = "code", nullable = false, length = 50)
