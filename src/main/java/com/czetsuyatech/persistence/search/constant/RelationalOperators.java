@@ -47,7 +47,25 @@ public enum RelationalOperators {
   LIKE {
     @Override
     public String toString() {
-      return "%";
+      return "*";
+    }
+  },
+  IN {
+    @Override
+    public String toString() {
+      return "@";
+    }
+  },
+  JOIN {
+    @Override
+    public String toString() {
+      return "^";
+    }
+  },
+  NOTNULL {
+    @Override
+    public String toString() {
+      return "!";
     }
   };
 

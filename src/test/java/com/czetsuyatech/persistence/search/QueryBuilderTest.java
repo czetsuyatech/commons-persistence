@@ -99,7 +99,7 @@ class QueryBuilderTest {
   @Test
   void build_shouldReturnUser_whenFirstNameLikeIsMatched() {
 
-    var searchParams = "firstName%ar";
+    var searchParams = "firstName*ar";
     var userSpec = QueryBuilder.<UserEntity, UserSpecification>build(searchParams, UserSpecification.class,
         UserSearchFields.class);
 
@@ -115,7 +115,7 @@ class QueryBuilderTest {
   @Test
   void build_shouldReturnUser_whenLastNameLikeIsMatched() {
 
-    var searchParams = "lastName%ar";
+    var searchParams = "lastName*ar";
     var userSpec = QueryBuilder.<UserEntity, UserSpecification>build(searchParams, UserSpecification.class,
         UserSearchFields.class);
 

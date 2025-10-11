@@ -11,7 +11,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class QueryBuilder {
 
-  private static final Pattern pattern = Pattern.compile("(\\w+?)(<=|>=|[:<>/%~])(.+?),");
+  private static final Pattern pattern = Pattern.compile("(\\w+?)(<=|>=|[:<>/*~])(.+?),");
 
   private QueryBuilder() {
 
