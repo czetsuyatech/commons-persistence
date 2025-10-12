@@ -23,13 +23,7 @@ public enum RelationalOperators {
   NOTEQUAL {
     @Override
     public String toString() {
-      return "/";
-    }
-  },
-  ISNULL {
-    @Override
-    public String toString() {
-      return "~";
+      return "<>";
     }
   },
   GREATER_THAN_EQUAL {
@@ -44,6 +38,18 @@ public enum RelationalOperators {
       return "<=";
     }
   },
+  ISNULL {
+    @Override
+    public String toString() {
+      return "~";
+    }
+  },
+  NOTNULL {
+    @Override
+    public String toString() {
+      return "~~";
+    }
+  },
   LIKE {
     @Override
     public String toString() {
@@ -53,19 +59,13 @@ public enum RelationalOperators {
   IN {
     @Override
     public String toString() {
-      return "@";
+      return "^";
     }
   },
   JOIN {
     @Override
     public String toString() {
-      return "^";
-    }
-  },
-  NOTNULL {
-    @Override
-    public String toString() {
-      return "!";
+      return ">>";
     }
   };
 

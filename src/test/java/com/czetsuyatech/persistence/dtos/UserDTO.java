@@ -1,5 +1,6 @@
 package com.czetsuyatech.persistence.dtos;
 
+import com.czetsuyatech.persistence.entities.OrientationEnum;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
@@ -12,5 +13,9 @@ public class UserDTO {
   private String firstName;
   private String lastName;
   private LocalDateTime birthDate;
+  private OrientationEnum orientation;
   private List<String> hobbies;
+  private AddressDTO address;
+
+  private List<OrientationEnum> orientations;
 }

@@ -4,7 +4,10 @@ import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +33,10 @@ public class UserEntity extends BaseEntity {
   @Column(name = "birth_date")
   private LocalDateTime birthDate;
 
+  @Enumerated(EnumType.STRING)
+  @Column(name = "orientation")
+  private OrientationEnum orientation;
+
   @ElementCollection
   @CollectionTable(
       name = "user_hobby",
@@ -37,4 +44,7 @@ public class UserEntity extends BaseEntity {
   )
   @Column(name = "hobby")
   private List<String> hobbies;
+
+  @OneToOne(mappedBy = "user")
+  private AddressEntity address;
 }

@@ -75,7 +75,7 @@ class QueryBuilderTest {
     var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
 
     assertThat(result).isNotNull();
-    assertThat(result).hasSize(1);
+    assertThat(result).hasSize(2);
     assertThat(result.get().findFirst().get().getLastName()).isEqualTo("Legaspi");
   }
 
@@ -90,7 +90,7 @@ class QueryBuilderTest {
     var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
 
     assertThat(result).isNotNull();
-    assertThat(result).hasSize(1);
+    assertThat(result).hasSize(2);
     assertThat(result.get().findFirst().get().getFirstName()).isEqualTo("Edward");
     assertThat(result.get().findFirst().get().getLastName()).isEqualTo("Legaspi");
   }
@@ -106,7 +106,7 @@ class QueryBuilderTest {
     var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
 
     assertThat(result).isNotNull();
-    assertThat(result).hasSize(3);
+    assertThat(result).hasSize(5);
     assertThat(result.get().findFirst().get().getFirstName()).isEqualTo("Edward");
     assertThat(result.get().findFirst().get().getLastName()).isEqualTo("Legaspi");
   }

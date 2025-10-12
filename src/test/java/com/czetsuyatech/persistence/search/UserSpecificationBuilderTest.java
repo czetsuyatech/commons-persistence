@@ -4,7 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
 import com.czetsuyatech.persistence.config.CzetsuyaTechDataJpaTest;
+import com.czetsuyatech.persistence.dtos.AddressDTO;
 import com.czetsuyatech.persistence.dtos.UserDTO;
+import com.czetsuyatech.persistence.entities.OrientationEnum;
 import com.czetsuyatech.persistence.repositories.UserRepository;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,17 +48,35 @@ public class UserSpecificationBuilderTest {
     var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
 
     assertThat(result).isNotNull();
-    assertThat(result).hasSize(1);
+    assertThat(result).hasSize(2);
   }
 
   @Test
-  void build_shouldReturn2_whenNameIsEdward() {
+  void build_shouldReturnMales_whenOrientationFilterIsSet() {
 
     UserDTO userDTO = UserDTO.builder()
         .firstName("Edward")
         .lastName("Legaspi")
-        .hobbies(List.of("Chess", "Anime"))
+        .orientations(List.of(OrientationEnum.MALE))
         .birthDate(LocalDateTime.now())
+        .build();
+
+    UserSpecificationBuilder userSpecificationBuilder = new UserSpecificationBuilder(userDTO);
+    var userSpec = userSpecificationBuilder.build();
+
+    var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
+
+    assertThat(result).isNotNull();
+    assertThat(result).hasSize(10);
+  }
+
+  @Test
+  void build_shouldReturnUserInPH_whenSearchByCountry() {
+
+    UserDTO userDTO = UserDTO.builder()
+        .address(AddressDTO.builder()
+            .country("PH")
+            .build())
         .build();
 
     UserSpecificationBuilder userSpecificationBuilder = new UserSpecificationBuilder(userDTO);

@@ -137,7 +137,7 @@ public class SimpleSliceJpaRepositoryImpl<T, I extends Serializable> extends Sim
     Root<T> root = this.applySpecificationToCriteria(spec, this.getEntityType(), query);
     Set<Selection<T>> selections = QueryProjectionUtils.createProjectedSelection(root, this.getEntityType(),
         projectionType);
-    query.multiselect(new ArrayList(selections));
+    query.select(criteriaBuilder.tuple(new ArrayList<>(selections)));
     if (sort != null) {
       query.orderBy(QueryUtils.toOrders(sort, root, criteriaBuilder));
     }

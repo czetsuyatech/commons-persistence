@@ -32,45 +32,45 @@ public class GenericSpecification<T> implements Specification<T> {
     String key = criteria.getKey();
     Object value = criteria.getValue();
 
-    if (criteria.getOperation().equalsIgnoreCase(RelationalOperators.GREATER_THAN_EQUAL.toString())) {
+    if (criteria.getOperation().equals(RelationalOperators.GREATER_THAN_EQUAL.toString())) {
       return buildComparison(root, builder,
-          (expr, val) -> {
-            return builder.greaterThanOrEqualTo(expr, val);
-          });
+          (expr, val) -> builder.greaterThanOrEqualTo(expr, val));
     }
 
-    if (criteria.getOperation().equalsIgnoreCase(RelationalOperators.LESS_THAN_EQUAL.toString())) {
+    if (criteria.getOperation().equals(RelationalOperators.LESS_THAN_EQUAL.toString())) {
       return buildComparison(root, builder,
-          (expr, val) -> {
-            return builder.lessThanOrEqualTo(expr, val);
-          });
+          (expr, val) -> builder.lessThanOrEqualTo(expr, val));
     }
 
-    if (RelationalOperators.EQUAL.toString().equalsIgnoreCase(operation)) {
+    if (RelationalOperators.EQUAL.toString().equals(operation)) {
       return builder.equal(root.get(key), value);
     }
 
-    if (RelationalOperators.NOTEQUAL.toString().equalsIgnoreCase(operation)) {
+    if (RelationalOperators.NOTEQUAL.toString().equals(operation)) {
       return builder.notEqual(root.get(key), value);
     }
 
-    if (RelationalOperators.LIKE.toString().equalsIgnoreCase(operation)
+    if (RelationalOperators.NOTNULL.toString().equals(operation)) {
+      return root.get(key).isNotNull();
+    }
+
+    if (RelationalOperators.ISNULL.toString().equals(operation)) {
+      return root.get(key).isNull();
+    }
+
+    if (RelationalOperators.LIKE.toString().equals(operation)
         && root.get(key).getJavaType() == String.class) {
       return builder.like(root.get(key),
           SpecificationConstant.LIKE_WILDCARD + value + SpecificationConstant.LIKE_WILDCARD);
     }
 
-    if (RelationalOperators.IN.toString().equalsIgnoreCase(operation) && value instanceof Collection) {
-      return root.get(key).in(value);
+    if (RelationalOperators.IN.toString().equals(operation) && value instanceof Collection) {
+      return root.get(key).in((Collection) value);
     }
 
-    if (RelationalOperators.JOIN.toString().equalsIgnoreCase(operation)) {
+    if (RelationalOperators.JOIN.toString().equals(operation)) {
       String[] split = key.split("\\.");
       return builder.equal(root.join(split[0]).get(split[1]), value);
-    }
-
-    if (RelationalOperators.NOTNULL.toString().equals(operation)) {
-      return root.get(key).isNotNull();
     }
 
     return null;
