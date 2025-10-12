@@ -2,6 +2,7 @@ package com.czetsuyatech.persistence.search;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * K/V pair with operator. Operators are:
@@ -13,6 +14,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SearchCriteria {
 
   private String key;

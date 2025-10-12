@@ -19,4 +19,8 @@ VALUES (1, 0, 'Edward', 'Legaspi'),
        (18, 0, 'Ruby', 'Moore'),
        (19, 0, 'Sam', 'Jackson'),
        (20, 0, 'Tina', 'Martin'),
-       (21, 0, 'Alice', 'Johnson');
+       (21, 0, 'Alice', 'Johnson')
+;
+
+INSERT INTO user_account (id, version, last_name)
+VALUES (22, 0, 'Johnson');

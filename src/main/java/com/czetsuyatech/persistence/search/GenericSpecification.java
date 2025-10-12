@@ -34,38 +34,42 @@ public class GenericSpecification<T> implements Specification<T> {
 
     if (criteria.getOperation().equalsIgnoreCase(RelationalOperators.GREATER_THAN_EQUAL.toString())) {
       return buildComparison(root, builder,
-          (expr, val) -> builder.greaterThanOrEqualTo(expr, val));
+          (expr, val) -> {
+            return builder.greaterThanOrEqualTo(expr, val);
+          });
     }
 
     if (criteria.getOperation().equalsIgnoreCase(RelationalOperators.LESS_THAN_EQUAL.toString())) {
       return buildComparison(root, builder,
-          (expr, val) -> builder.lessThanOrEqualTo(expr, val));
+          (expr, val) -> {
+            return builder.lessThanOrEqualTo(expr, val);
+          });
     }
 
     if (RelationalOperators.EQUAL.toString().equalsIgnoreCase(operation)) {
       return builder.equal(root.get(key), value);
     }
 
-    if (RelationalOperators.NOTEQUAL.name().equalsIgnoreCase(operation)) {
+    if (RelationalOperators.NOTEQUAL.toString().equalsIgnoreCase(operation)) {
       return builder.notEqual(root.get(key), value);
     }
 
-    if (RelationalOperators.LIKE.name().equalsIgnoreCase(operation)
+    if (RelationalOperators.LIKE.toString().equalsIgnoreCase(operation)
         && root.get(key).getJavaType() == String.class) {
       return builder.like(root.get(key),
           SpecificationConstant.LIKE_WILDCARD + value + SpecificationConstant.LIKE_WILDCARD);
     }
 
-    if ("IN".equalsIgnoreCase(operation) && value instanceof Collection) {
+    if (RelationalOperators.IN.toString().equalsIgnoreCase(operation) && value instanceof Collection) {
       return root.get(key).in(value);
     }
 
-    if ("JOIN".equalsIgnoreCase(operation)) {
+    if (RelationalOperators.JOIN.toString().equalsIgnoreCase(operation)) {
       String[] split = key.split("\\.");
       return builder.equal(root.join(split[0]).get(split[1]), value);
     }
 
-    if ("NOT_NULL".equals(operation)) {
+    if (RelationalOperators.NOTNULL.toString().equals(operation)) {
       return root.get(key).isNotNull();
     }
 
