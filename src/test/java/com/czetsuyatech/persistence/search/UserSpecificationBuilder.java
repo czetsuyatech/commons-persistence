@@ -30,6 +30,12 @@ public class UserSpecificationBuilder extends AbstractSpecificationsBuilder<User
               RelationalOperators.NOTNULL.toString(), userDTO.getBirthDate())));
     }
 
+    if (null != userDTO.getHobbies() && userDTO.getHobbies().size() > 0) {
+      spec = Specification.where(spec)
+          .and(new GenericSpecification<>(new SearchCriteria(UserEntity_.hobbies.getName(),
+              RelationalOperators.IN.toString(), userDTO.getHobbies())));
+    }
+
     return spec;
   }
 }

@@ -22,5 +22,10 @@ VALUES (1, 0, 'Edward', 'Legaspi'),
        (21, 0, 'Alice', 'Johnson')
 ;
 
-INSERT INTO user_account (id, version, last_name)
-VALUES (22, 0, 'Johnson');
+INSERT INTO user_account (id, version, first_name, last_name, birth_date)
+VALUES (22, 0, 'Larry', 'Johnson', '1984-10-13 14:0:00'),
+       (23, 0, 'Edward', 'CzetsuyaTech', '1984-10-13 14:0:00');
+
+INSERT INTO user_hobby (user_id, hobby)
+VALUES (1, 'Chess'),
+       (23, 'Anime');

@@ -7,6 +7,7 @@ import com.czetsuyatech.persistence.config.CzetsuyaTechDataJpaTest;
 import com.czetsuyatech.persistence.dtos.UserDTO;
 import com.czetsuyatech.persistence.repositories.UserRepository;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,11 @@ public class UserSpecificationBuilderTest {
   private UserSpecificationBuilder userSpecificationBuilder;
 
   @Test
-  void test() {
+  void build_shouldReturn1_whenDateIsNotNull() {
 
     UserDTO userDTO = UserDTO.builder()
-        .firstName("test")
-        .lastName("test")
+        .firstName("czetsuya")
+        .lastName("tech")
         .birthDate(LocalDateTime.now())
         .build();
 
@@ -45,6 +46,25 @@ public class UserSpecificationBuilderTest {
     var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
 
     assertThat(result).isNotNull();
-    assertThat(result).hasSize(0);
+    assertThat(result).hasSize(1);
+  }
+
+  @Test
+  void build_shouldReturn2_whenNameIsEdward() {
+
+    UserDTO userDTO = UserDTO.builder()
+        .firstName("Edward")
+        .lastName("Legaspi")
+        .hobbies(List.of("Chess", "Anime"))
+        .birthDate(LocalDateTime.now())
+        .build();
+
+    UserSpecificationBuilder userSpecificationBuilder = new UserSpecificationBuilder(userDTO);
+    var userSpec = userSpecificationBuilder.build();
+
+    var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
+
+    assertThat(result).isNotNull();
+    assertThat(result).hasSize(2);
   }
 }
