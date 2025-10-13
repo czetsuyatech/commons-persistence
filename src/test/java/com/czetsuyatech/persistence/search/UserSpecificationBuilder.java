@@ -51,6 +51,12 @@ public class UserSpecificationBuilder extends AbstractSpecificationsBuilder<User
               RelationalOperators.JOIN.toString(), userDTO.getAddress().getCountry())));
     }
 
+    if (null != userDTO.getFavoriteNos() && userDTO.getFavoriteNos().size() > 0) {
+      spec = Specification.where(spec)
+          .and(new GenericSpecification<>(new SearchCriteria(UserEntity_.favoriteNo.getName(),
+              RelationalOperators.IN.toString(), userDTO.getFavoriteNos())));
+    }
+
     return spec;
   }
 }

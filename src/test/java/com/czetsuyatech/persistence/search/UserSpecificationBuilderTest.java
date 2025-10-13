@@ -71,7 +71,7 @@ public class UserSpecificationBuilderTest {
   }
 
   @Test
-  void build_shouldReturnUserInPH_whenSearchByCountry() {
+  void build_shouldReturnUsers_withCountry() {
 
     UserDTO userDTO = UserDTO.builder()
         .address(AddressDTO.builder()
@@ -86,5 +86,21 @@ public class UserSpecificationBuilderTest {
 
     assertThat(result).isNotNull();
     assertThat(result).hasSize(2);
+  }
+
+  @Test
+  void build_shouldReturnUsers_withFavoriteNo() {
+
+    UserDTO userDTO = UserDTO.builder()
+        .favoriteNos(List.of(2, 4, 10))
+        .build();
+
+    UserSpecificationBuilder userSpecificationBuilder = new UserSpecificationBuilder(userDTO);
+    var userSpec = userSpecificationBuilder.build();
+
+    var result = userRepository.findAllSlice(userSpec, Pageable.ofSize(10));
+
+    assertThat(result).isNotNull();
+    assertThat(result).hasSize(7);
   }
 }

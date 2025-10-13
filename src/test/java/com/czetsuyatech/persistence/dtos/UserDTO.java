@@ -18,4 +18,5 @@ public class UserDTO {
   private AddressDTO address;
 
   private List<OrientationEnum> orientations;
+  private List<Integer> favoriteNos;
 }

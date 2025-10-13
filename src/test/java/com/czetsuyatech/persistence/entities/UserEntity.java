@@ -37,6 +37,9 @@ public class UserEntity extends BaseEntity {
   @Column(name = "orientation")
   private OrientationEnum orientation;
 
+  @Column(name = "favorite_no")
+  private Integer favoriteNo;
+
   @ElementCollection
   @CollectionTable(
       name = "user_hobby",
