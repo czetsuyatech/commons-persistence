@@ -31,7 +31,7 @@ public class QueryProjectionUtils {
   public static <T, R> Set<Selection<T>> createProjectedSelection(Root<T> root, Class<T> rootType,
       Class<R> projectionType) {
 
-    Set<Selection<T>> selections = new HashSet();
+    Set<Selection<T>> selections = new HashSet<>();
     List<PropertyDescriptor> inputProperties = projectionFactory.getProjectionInformation(projectionType)
         .getInputProperties();
     inputProperties.forEach((propertyDescriptor) -> {
@@ -74,7 +74,7 @@ public class QueryProjectionUtils {
 
   private static Map<String, Object> createMappedResult(Tuple tuple) {
 
-    Map<String, Object> mappedResult = new HashMap(tuple.getElements().size());
+    Map<String, Object> mappedResult = new HashMap<>(tuple.getElements().size());
     tuple.getElements().forEach((tupleElement) -> {
       String name = tupleElement.getAlias();
       mappedResult.put(name, tuple.get(name));

@@ -71,7 +71,7 @@ public class SimpleSliceJpaRepositoryImpl<T, I extends Serializable> extends Sim
   public Slice<T> findAllSlice(Specification<T> spec, Pageable pageable) {
 
     Page<T> result = this.findAll(spec, pageable);
-    return new SimpleSliceImpl(result.getContent(), pageable, result.hasNext());
+    return new SimpleSliceImpl<>(result.getContent(), pageable, result.hasNext());
   }
 
   public <S> S findOne(Specification<T> spec, Class<S> projectionType) {
@@ -121,13 +121,13 @@ public class SimpleSliceJpaRepositoryImpl<T, I extends Serializable> extends Sim
   }
 
   public <S> Page<S> findAll(Pageable pageable, Class<S> projectionType) {
-    return this.findAll((Specification) null, (Pageable) pageable, projectionType);
+    return this.findAll(null, (Pageable) pageable, projectionType);
   }
 
   public <S> Slice<S> findAllSlice(Specification<T> spec, Pageable pageable, Class<S> projectionType) {
 
     Page<S> result = this.findAll(spec, pageable, projectionType);
-    return new SimpleSliceImpl(result.getContent(), pageable, result.hasNext());
+    return new SimpleSliceImpl<>(result.getContent(), pageable, result.hasNext());
   }
 
   private <S> CriteriaQuery<Tuple> createQuery(Specification<T> spec, Sort sort, Class<S> projectionType) {
