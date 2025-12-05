@@ -1,8 +1,8 @@
 package com.czetsuyatech.persistence.search;
 
-import com.czetsuyatech.persistence.dtos.UserDTO;
-import com.czetsuyatech.persistence.entities.UserEntity;
-import com.czetsuyatech.persistence.entities.UserEntity_;
+import com.czetsuyatech.persistence.dto.UserDTO;
+import com.czetsuyatech.persistence.entity.UserEntity;
+import com.czetsuyatech.persistence.entity.UserEntity_;
 import com.czetsuyatech.persistence.search.constant.RelationalOperators;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;

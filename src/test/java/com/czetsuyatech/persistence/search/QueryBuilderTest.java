@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
 import com.czetsuyatech.persistence.config.CzetsuyaTechDataJpaTest;
-import com.czetsuyatech.persistence.entities.UserEntity;
-import com.czetsuyatech.persistence.repositories.UserRepository;
+import com.czetsuyatech.persistence.entity.UserEntity;
+import com.czetsuyatech.persistence.repository.UserRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package com.czetsuyatech.persistence.config;
 
-import com.czetsuyatech.persistence.entities.CtEntitiesConfig;
-import com.czetsuyatech.persistence.repositories.CtRepositoriesConfig;
-import com.czetsuyatech.persistence.repositories.SimpleSliceJpaRepositoryImpl;
+import com.czetsuyatech.persistence.entity.CtEntitiesConfig;
+import com.czetsuyatech.persistence.repository.CtRepositoriesConfig;
+import com.czetsuyatech.persistence.repository.SimpleSliceJpaRepositoryImpl;
 import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;

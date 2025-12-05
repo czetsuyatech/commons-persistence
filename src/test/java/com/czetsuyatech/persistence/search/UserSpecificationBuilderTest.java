@@ -4,10 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
 import com.czetsuyatech.persistence.config.CzetsuyaTechDataJpaTest;
-import com.czetsuyatech.persistence.dtos.AddressDTO;
-import com.czetsuyatech.persistence.dtos.UserDTO;
-import com.czetsuyatech.persistence.entities.OrientationEnum;
-import com.czetsuyatech.persistence.repositories.UserRepository;
+import com.czetsuyatech.persistence.dto.AddressDTO;
+import com.czetsuyatech.persistence.dto.UserDTO;
+import com.czetsuyatech.persistence.entity.OrientationEnum;
+import com.czetsuyatech.persistence.repository.UserRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;

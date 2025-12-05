@@ -1,6 +1,6 @@
 package com.czetsuyatech.persistence.search;
 
-import com.czetsuyatech.persistence.entities.UserEntity;
+import com.czetsuyatech.persistence.entity.UserEntity;
 import com.czetsuyatech.persistence.search.constant.RelationalOperators;
 import com.czetsuyatech.persistence.search.constant.SpecificationConstant;
 import jakarta.persistence.criteria.CriteriaBuilder;
