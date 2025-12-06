@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     basePackageClasses = {
         CtRepositoriesConfig.class
     })
-
 @EntityScan(basePackageClasses = {CtEntitiesConfig.class})
 @EnableTransactionManagement
 public class TestPersistenceConfig {
