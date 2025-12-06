@@ -11,7 +11,7 @@
   </parent>
   <groupId>com.czetsuyatech.commons</groupId>
   <artifactId>commons-persistence</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0</version>
 
   <properties>
     <java.version>21</java.version>
